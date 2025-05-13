@@ -1,0 +1,327 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  line-height: 1.6;
+  background-color: #fff;
+  color: #333;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* HEADER */
+.header {
+  padding: 15px 0;
+  border-bottom: 1px solid #eaeaea;
+}
+
+.header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.logo img {
+  height: 40px;
+}
+
+.menu {
+  margin: 10px 0;
+}
+
+.menu ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.menu li a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  font-size: 1rem;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.menu li a.active,
+.menu li a:hover {
+  color: #FFD700;
+  border-bottom: 3px solid #FFD700;
+}
+
+.menu li a.active::after,
+.menu li a:hover::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 100%;
+  height: 3px;
+  background-color: #FFD700;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.search-icon svg {
+  cursor: pointer;
+  transition: opacity 0.3s;
+}
+
+.search-icon:hover path {
+  stroke: #333;
+}
+
+.btn {
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+.btn-yellow {
+  background-color: #FFD700;
+  color: #000;
+}
+.btn-blue {
+  background-color: #007BFF;
+  color: #fff;
+}
+
+.btn:hover {
+  opacity: 0.9;
+}
+
+/* Бургер-меню */
+#menu-toggle {
+  display: none;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.burger-icon {
+  display: block;
+}
+
+.menu-items {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+/* Адаптивность для маленьких экранов */
+@media (max-width: 768px) {
+  .menu {
+    position: relative;
+    order: 2;
+    width: 100%;
+    text-align: center;
+    margin-top: 10px;
+  }
+
+  .menu ul {
+    flex-direction: column;
+    display: none;
+    width: 100%;
+    background: #fff;
+    padding: 10px 0;
+    border-top: 1px solid #eee;
+  }
+
+  .menu ul.show {
+    display: flex; /* Отображаем меню при активном классе */
+  }
+
+  .menu li {
+    width: 100%;
+    text-align: center;
+    border-bottom: 1px solid #eee;
+  }
+
+  .menu li:last-child {
+    border-bottom: none;
+  }
+
+  .menu li a {
+    padding: 10px 0;
+    display: block;
+    width: 100%;
+  }
+
+  .menu li a:hover,
+  .menu li a.active {
+    background-color: #fffbe6;
+    border: none;
+  }
+
+  #menu-toggle {
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+
+  .header-right {
+    order: 3;
+    width: 100%;
+    justify-content: center;
+    margin-top: 15px;
+  }
+}
+
+/* SLIDER */
+/* Секция с логотипом и слайдером */
+.slider-section {
+  margin-top: 30px;
+}
+
+.slider-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 40px; /* Расстояние между логотипом и слайдером */
+}
+
+.slider-logo {
+  flex-shrink: 0; /* Логотип не должен уменьшаться при уменьшении экрана */
+  width: 200px; /* Фиксированная ширина логотипа */
+  height: 200px; /* Фиксированная высота логотипа */
+}
+
+.slider-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* Изображение будет масштабироваться без искажений */
+}
+
+.slider {
+  flex-grow: 1; /* Слайдер займёт оставшееся пространство */
+  max-width: 800px; /* Максимальная ширина слайдера */
+}
+
+.slider-dots {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.slick-dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin: 0 5px;
+  padding: 0;
+  background: #ccc;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.slick-dot span {
+  display: none;
+}
+
+.slick-active button {
+  background: #FFD700;
+}
+
+/* SPECIAL OFFERS */
+.section-title {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.all-products {
+  display: inline-block;
+  margin-bottom: 20px;
+  color: #007BFF;
+  font-weight: bold;
+}
+
+.product-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.product-card {
+  border: 1px solid #ddd;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.product-card:hover {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 768px) {
+  .slider-wrapper {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .slider-logo {
+    width: 100%;
+    height: auto;
+    max-width: 300px; /* Добавляем ограничение по ширине */
+    margin: 0 auto; /* Выравниваем по центру */
+  }
+
+  .slider {
+    max-width: 100%;
+    margin: 0 auto; /* Выравниваем по центру */
+  }
+}
+/* Ограничиваем ширину слайдера */
+.slider {
+  max-width: 800px; /* Максимальная ширина слайдера */
+  width: 100%; /* Занимает всю доступную ширину контейнера */
+}
+
+/* Убираем лишние отступы */
+.slider-section {
+  margin-top: 0; /* Убираем верхний отступ */
+}
+
+.slider-wrapper {
+  margin-bottom: 20px; /* Оставляем небольшой нижний отступ */
+}
+/* Контейнер */
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}

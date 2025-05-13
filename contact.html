@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ru">
+  
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Контакты</title>
+  
+  <!-- Стили -->
+  <link rel="stylesheet" href="css/slick.css">
+  <link rel="stylesheet" href="css/slick-theme.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Форма обратной связи -->
+  <section class="contact-form">
+    <div class="container">
+      <h2>Свяжитесь с нами</h2>
+      <form id="contact-form">
+        <label>Имя:
+          <input type="text" required />
+        </label><br />
+        <label>Email:
+          <input type="email" required />
+        </label><br />
+        <label>Сообщение:
+          <textarea required></textarea>
+        </label><br />
+        <button type="submit">Отправить</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Подвал (общий для всех страниц) -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Мой магазин</p>
+    </div>
+  </footer>
+
+  <!-- Скрипты -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js "></script>
+  <script src="js/slick.min.js"></script>
+  <script src="js/cart.js"></script>
+
+  <!-- Инициализация слайдера (если есть на странице) -->
+  <script>
+    $(document).ready(function(){
+      // Если на странице есть слайдер, инициализируем его
+      if ($('.slider').length > 0) {
+        $('.slider').slick({
+          autoplay: true,
+          autoplaySpeed: 3000,
+          dots: true,
+          arrows: true,
+          prevArrow: '<button type="button" class="slick-prev">❮</button>',
+          nextArrow: '<button type="button" class="slick-next">❯</button>'
+        });
+      }
+    });
+  </script>
+  <script>
+    // Загружаем шапку
+    fetch('partials/header.html')
+      .then(response => response.text())
+      .then(data => {
+        document.body.insertAdjacentHTML('afterbegin', data);
+  
+        // После загрузки шапки — добавляем active класс
+        const menuLinks = document.querySelectorAll('#main-menu a');
+        const currentPath = window.location.pathname.split('/').pop(); // Получаем имя текущей страницы
+  
+        menuLinks.forEach(link => {
+          const linkPath = link.getAttribute('href');
+  
+          if (linkPath === currentPath) {
+            link.classList.add('active');
+          }
+        });
+      })
+      .catch(err => console.error('Не удалось загрузить шапку:', err));
+  </script>
+
+</body>
+</html>
